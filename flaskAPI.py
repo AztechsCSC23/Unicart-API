@@ -13,14 +13,14 @@ def search_products():
     collection = db['products']
     
     # Search the collection for matching products
-    matching_products = collection.find({'name': {'$regex': query, '$options': 'i'}})
+    matching_products = collection.find({'product_name': {'$regex': query, '$options': 'i'}})
     
     # Prepare the response
     results = []
     for product in matching_products:
         results.append({
-            'name': product['name'],
-            'price': product['price'],
+            'name': product['product_name'],
+            'price': product['product_price'],
             'shipped_from_abroad': product['shipped_from_abroad']
         })
     
